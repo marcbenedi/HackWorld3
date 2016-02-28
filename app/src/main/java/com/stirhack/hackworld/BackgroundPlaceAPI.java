@@ -14,7 +14,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class BackgroundUpdate extends AsyncTask<LatLng, Void, String> {
+public class BackgroundPlaceAPI extends AsyncTask<LatLng, Void, String> {
     //Params,Progress,Result
 
     private Context context;
@@ -24,7 +24,7 @@ public class BackgroundUpdate extends AsyncTask<LatLng, Void, String> {
     Boolean hotel;
     String radius;
 
-    public BackgroundUpdate(Context c)
+    public BackgroundPlaceAPI(Context c)
     {
         context = c;
     }

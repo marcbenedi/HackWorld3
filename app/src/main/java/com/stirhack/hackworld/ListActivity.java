@@ -5,13 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -27,6 +21,10 @@ public class ListActivity extends Activity {
 
         ImageView myImage = (ImageView) findViewById(R.id.myImage);
         myImage.setAlpha(127);
+
+        //PROBA---------------------------------------------
+        BackgroundJSOUP a = new BackgroundJSOUP(this);
+        a.execute();
 
         registrarEventos();
     }
