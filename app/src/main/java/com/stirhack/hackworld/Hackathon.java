@@ -9,11 +9,13 @@ public class Hackathon {
     private String when;
     private String where;
     private Image icon;
+    private String link;
     //constructor
-    public Hackathon(String name, String when, String where){
+    public Hackathon(String name, String when, String where, String link){
         this.name = name;
         this.when = when;
         this.where = where;
+        this.link = link;
     }
     //methods
     public String getName(){
@@ -24,5 +26,8 @@ public class Hackathon {
     }
     public String getWhere(){
         return where;
+    }
+    public String getLink(){
+        return link;
     }
 }
