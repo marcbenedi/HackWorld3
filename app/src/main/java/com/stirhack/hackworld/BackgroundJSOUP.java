@@ -9,13 +9,7 @@ import com.google.android.gms.maps.model.LatLng;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 public class BackgroundJSOUP extends AsyncTask<LatLng, Void, String> {
     //Params,Progress,Result
@@ -39,6 +33,9 @@ public class BackgroundJSOUP extends AsyncTask<LatLng, Void, String> {
             System.out.print(resultConnection);
             System.out.print("\n\n\n\n");
             System.out.print(doc.title()+"\n");
+
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
