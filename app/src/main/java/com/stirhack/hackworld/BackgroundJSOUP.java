@@ -8,10 +8,11 @@ import com.google.android.gms.maps.model.LatLng;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
-public class BackgroundJSOUP extends AsyncTask<LatLng, Void, String> {
+public class BackgroundJSOUP extends AsyncTask<Void, Void, String> {
     //Params,Progress,Result
 
     private Context context;
@@ -23,18 +24,17 @@ public class BackgroundJSOUP extends AsyncTask<LatLng, Void, String> {
     }
 
     @Override
-    protected String doInBackground(LatLng... params) {
+    protected String doInBackground(Void... params) {
 
         final String url = "https://mlh.io/seasons/s2016-eu/events";
 
         try {
             Document doc = Jsoup.connect(url).get();
-            resultConnection = doc.toString();
-            System.out.print(resultConnection);
-            System.out.print("\n\n\n\n");
-            System.out.print(doc.title()+"\n");
-
-
+            Elements event = doc.select("div.event-wrapper");
+            for (org.jsoup.nodes.Element row : event.select("h3")) {
+                System.out.print(row.text());
+                System.out.print("\n");
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
