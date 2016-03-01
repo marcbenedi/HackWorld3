@@ -33,15 +33,12 @@ public class Utility {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-        int weatherId = -1;
-        String weatherDescription = "ERROR";
         int size = 0;
         LatLng pos;
         double lat;
         double lng;
         String name;
 
-        //Get the wheater id
         try {
             JSONObject apiObj = new JSONObject(temp);
             JSONArray listArr = apiObj.getJSONArray("results");

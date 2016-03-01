@@ -17,10 +17,10 @@ public class Hackathon {
         this.where = where;
         this.link = link;
     }
-    //methods
-    public String getName(){
-        return name;
+    public Hackathon(){
     }
+    //methods
+    public String getName(){return name;}
     public String getWhen(){
         return when;
     }

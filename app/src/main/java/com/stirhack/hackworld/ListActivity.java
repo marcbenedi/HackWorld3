@@ -11,7 +11,12 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
+
 public class ListActivity extends Activity {
+
+    private ArrayList<Hackathon> myList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +27,14 @@ public class ListActivity extends Activity {
         ImageView myImage = (ImageView) findViewById(R.id.myImage);
         myImage.setAlpha(127);
 
-        //PROBA---------------------------------------------
         BackgroundJSOUP a = new BackgroundJSOUP(this);
-        a.execute();
+        try {
+            myList = a.execute().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
 
         registrarEventos();
     }
