@@ -1,12 +1,9 @@
 package com.stirhack.hackworld;
 
-import android.app.NotificationManager;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.view.View;
 
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -28,7 +25,7 @@ public class Utility {
     {
 
         String temp = new String("NULL");
-        BackgroundUpdate a = new BackgroundUpdate(context);
+        BackgroundPlaceAPI a = new BackgroundPlaceAPI(context);
         try {
             temp = a.execute(position).get();
         } catch (InterruptedException e) {
@@ -36,15 +33,12 @@ public class Utility {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-        int weatherId = -1;
-        String weatherDescription = "ERROR";
         int size = 0;
         LatLng pos;
         double lat;
         double lng;
         String name;
 
-        //Get the wheater id
         try {
             JSONObject apiObj = new JSONObject(temp);
             JSONArray listArr = apiObj.getJSONArray("results");
