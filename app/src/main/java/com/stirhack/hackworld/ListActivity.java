@@ -9,6 +9,7 @@ import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -53,10 +54,12 @@ public class ListActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }*/
 
-    private void registrarEventos(){
+    private void registrarEventos() {
 
         /// selecciona la lista en pantalla segun su ID
         ListView lista1 = (ListView) findViewById(R.id.miLista);
+        ListAdapter adapter = new MyAdapter(this, R.layout.item_list, myList);
+        lista1.setAdapter(adapter);
 
         // registra una accion para el evento click
         lista1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -64,44 +67,25 @@ public class ListActivity extends Activity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 /// Obtiene el valor de la casilla elegida
-                String itemSeleccionado = adapterView.getItemAtPosition(i).toString();
+                final Hackathon itemSeleccionado = (Hackathon) adapterView.getItemAtPosition(i);
 
-                show_details(i);
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                builder.setMessage("City: " + itemSeleccionado.getWhere() + "\n" + "Date: "
+                        + itemSeleccionado.getWhen() + "\n")
+                        .setTitle("HACKATHON DETAILS")
+                        .setPositiveButton("Go to website", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(Intent.ACTION_VIEW);
+                                intent.setData(Uri.parse(itemSeleccionado.getLink()));
+                                startActivity(intent);
+                            }
+                        })
+                        .show();
 
             }
         });
 
-    }
-
-    public void show_details(int position) {
-        String[] cities = {"Ames", "Ann Arbor", "Pittsburgh", "Barcelona", "Boulder", "Monterrey",
-                "Wellesley", "St. Andrews", "Glasgow","Coventry","Miami","London","Blacksburg","East Lansing","Amherst"};
-
-        String[] dates = {"19/02/2016", "19/02/2016", "19/02/2016", "19/02/2016", "20/02/2016", "20/02/2016", "20/02/2016",
-                "20/02/2016", "20/02/2016","20/02/2016","20/02/2016","20/02/2016","26/02/2016","26/02/2016","26/02/2016"};
-
-        String[] urels = {"http://hackisu.com/", "http://mhacks.org/", "http://steelhacks.com/",
-                "https://hackupc.com/", "http://t9hacks.org/", "http://hackmty.com/",
-                "http://wellesleyhacks.org/", "http://stacshack.org/", "http://www.hack.warwick.tech",
-                "http://www.hack.warwick.tech/","http://coe.miami.edu/uhack2016/","http://www.ichack.org/",
-                "http://vthacks.com/","https://www.spartahack.com/","http://hamphack.hampshire.edu/"};
-
-        String city = cities[position];
-        String date = dates[position];
-        final String url = urels[position];
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("City: " + city + "\n" + "Date: " + date + "\n")
-                .setTitle("HACKATON DETAILS")
-                .setPositiveButton("Go to website", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(Intent.ACTION_VIEW);
-                        intent.setData(Uri.parse(url));
-                        startActivity(intent);
-                    }
-                })
-                .show();
     }
 
 }
