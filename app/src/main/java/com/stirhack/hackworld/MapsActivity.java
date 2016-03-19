@@ -47,17 +47,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         });
     }
 
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
-
     LatLng HackISU = new LatLng(42.034722, -93.62);
     LatLng MHacks = new LatLng(42.281389, -83.748333);
     LatLng SteelHacks = new LatLng(40.439722, -79.976389);
