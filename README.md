@@ -2,12 +2,12 @@
 
 ## Synopsis
 HackWorld was our project for StirHack2016. My first Hackathon.
-As it was our first time in a hackathon we decided to do an app to help beginners as us.
+As it was our first time in a hackathon we decided to do an app to help beginners like us.
 
 ## App
 The app has to screens. 
 
-The first screen shows a list of season hackathon.
+The first screen shows a list of season hackathons.
 The app gets the information from the mlh.com web page. It downloada the html code and read it to do the list.
 When the user click to a hackathon some information appears about the event.
 
